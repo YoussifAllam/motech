@@ -15,11 +15,11 @@ class CarPhotoInline(admin.TabularInline):  # Or admin.StackedInline for a diffe
 
 class CarsInfoAdmin(admin.ModelAdmin):
     inlines = [CarPhotoInline,]
-    list_display =  ( 'Car_Company_and_model' , 'price',  'status' , 'production_year' )
-    list_filter = ('Company_name' , 'status')
-    search_fields = ('Company_name' , 'Car_model_name')
+    list_display =  ('car_code' , 'Car_Company_and_model' , 'price',  'status' , 'production_year' )
+    list_filter = ('Make' , 'status')
+    search_fields = ('Make' , 'Car_model_name')
     def Car_Company_and_model(self,obj):
-        return f'{obj.Company_name} , {obj.Car_model_name}'
+        return f'{obj.Make} , {obj.Car_model_name}'
     
 
 admin.site.register(Cars_Info, CarsInfoAdmin)
